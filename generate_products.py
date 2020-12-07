@@ -17,7 +17,7 @@ def generate_html(row):
     return f'<div class="col-md-4">\
                 <div class="card-box-a">\
                 <div class="img-box-a">\
-                    <img src="assets/img/product_photos/{row["id"]}.jpg" alt="" class="img-a img-fluid">\
+                    <img src="/assets/img/product_photos/{row["id"]}.JPG" alt="" class="img-a img-fluid">\
                 </div>\
                 <div class="card-overlay">\
                     <div class="card-overlay-a-content">\
