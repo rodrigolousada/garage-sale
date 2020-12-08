@@ -10,6 +10,8 @@ def HTMLEntitiesToUnicode(text):
 
 def unicodeToHTMLEntities(text):
     """Converts unicode to HTML entities.  For example '&' becomes '&amp;'."""
+    if(type(text)==int or type(text)==float):
+        return text
     text = html.escape(text).encode('ascii', 'xmlcharrefreplace').decode('utf-8')
     return text
 
@@ -17,7 +19,7 @@ def generate_html(row):
     return f'<div class="col-md-4">\
                 <div class="card-box-a">\
                 <div class="img-box-a">\
-                    <img src="/assets/img/product_photos/{row["id"]}.JPG" alt="" class="img-a img-fluid">\
+                    <img src="./assets/img/product_photos/{row["id"]}.JPG" alt="" class="img-a img-fluid">\
                 </div>\
                 <div class="card-overlay">\
                     <div class="card-overlay-a-content">\
@@ -43,11 +45,11 @@ def generate_html(row):
                         </li>\
                         <li>\
                             <h4 class="card-info-title">Cor</h4>\
-                            <span>{row["color"]}</span>\
+                            <span>{unicodeToHTMLEntities(row["color"])}</span>\
                         </li>\
                         <li>\
                             <h4 class="card-info-title">Pre{unicodeToHTMLEntities("ç")}o</h4>\
-                            <span>{row["price"]}{unicodeToHTMLEntities("€")}</span>\
+                            <span><del style="color:red">{row["price"]+3}{unicodeToHTMLEntities("€")}</del>{row["price"]}{unicodeToHTMLEntities("€")}</span>\
                         </li>\
                         </ul>\
                     </div>\
